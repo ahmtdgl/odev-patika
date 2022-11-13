@@ -93,6 +93,19 @@ const categories = menu.reduce(
     }
     return values;
   },
-  ["All"]
+  ["All", "ahmet"]
 );
 
+
+// hazır menü ... arkasına reduce ile kategori yapıldı. buttonlar için
+
+categories.map(function (item) {
+  let button = document.createElement("button");
+  button.className = "btn btn-outline-dark btn-item";
+  button.setAttribute("data-id", this.id);
+  let text = document.createTextNode(item)
+
+  button.appendChild(text);
+  btnContainer.appendChild(button);
+  button.addEventListener("click",);
+})

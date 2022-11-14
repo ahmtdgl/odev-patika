@@ -32,7 +32,7 @@ const menu = [
     category: "China",
     price: 5.99,
     img:
-      "https://bczl.meb.k12.tr/meb_iys_dosyalar/34/06/969693/resimler/2021_04/k_02102337_2118fbf0-51e6-477f-b6f7-175761b15217.jpg",
+      "https://www.savingdessert.com/wp-content/uploads/2019/02/Dan-Dan-Noodles-10.jpg",
     desc: `Dan dan noodle, serving with green onion `,
   },
   {
@@ -82,7 +82,6 @@ const menu = [
   },
 ];
 
-
 const section = document.querySelector(".section-center");
 const btnContainer = document.querySelector(".btn-container");
 
@@ -93,20 +92,20 @@ const categories = menu.reduce(
     }
     return values;
   },
-  ["All",]
+  ["All"]
 );
 
-
-const categorylist = () => {
+const categoryList = () => {
   const categoryBtns = categories
     .map((category) => {
-      return `<button class="btn btn-outline-dark btn-item"
-       data-id=${category}>${category}</button>`;
+      return `<button class="btn btn-outline-dark btn-item" data-id=${category}>${category}</button>`;
     })
     .join("");
+
   btnContainer.innerHTML = categoryBtns;
   const filterBtns = document.querySelectorAll(".btn-item");
 
+  //filter menu
   filterBtns.forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const category = e.currentTarget.dataset.id;
@@ -125,26 +124,24 @@ const categorylist = () => {
   });
 };
 
-//category list bitimi
-
 const menuList = (menuItems) => {
   let displayMenu = menuItems.map((item) => {
     return `<div class="menu-items col-lg-6 col-sm-12">
-    <img
-     src=${item.img}
-      alt="${item.title}
-       class="photo"
-       />
-    <div class="menu-info">
-    <div class="menu-title">
-    <h4>${item.title}</h4>
-    <h4 class="price">${item.price}</h4>
-    </div>
-    <div class="menu-text">
-    ${item.desc}
-    </div>
-    </div>
-    </div>
+            <img
+              src=${item.img}
+              alt=${item.title}
+              class="photo"
+            />
+            <div class="menu-info">
+              <div class="menu-title">
+                <h4>${item.title}</h4>
+                <h4 class="price">${item.price}</h4>
+              </div>
+              <div class="menu-text">
+                ${item.desc}
+              </div>
+            </div>
+          </div>
     `;
   });
   displayMenu = displayMenu.join("");
@@ -152,6 +149,4 @@ const menuList = (menuItems) => {
 };
 
 menuList(menu);
-categorylist();
-
-
+categoryList();
